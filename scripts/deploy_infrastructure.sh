@@ -28,7 +28,10 @@ PROJECT_NAME=$(cat package.json | jq -r .name)
 OUTPUT_DIR="/tmp/cdk/${PROJECT_NAME}/${1}"
 CDK_OUT_FILE="${OUTPUT_DIR}/cdk.out.json"
 mkdir -p "${OUTPUT_DIR}"
-npm i --no-save tsx @wolframkriesing/picossg @simplifyd/picossg-to-aws
+npm i --no-save \
+  tsx@latest \
+  @wolframkriesing/picossg@latest \
+  @simplifyd/picossg-to-aws@latest
 npx cdk deploy \
   --app "npx tsx node_modules/@simplifyd/picossg-to-aws/src/index.ts" \
   --all \
