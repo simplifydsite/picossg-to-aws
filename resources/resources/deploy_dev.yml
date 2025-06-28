@@ -1,0 +1,32 @@
+name: Deploy
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, labeled ]
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    if: contains(github.event.pull_request.labels.*.name, 'deploy_dev')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - id: install-aws-cli
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          arch: arm64
+      - id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: install-dependencies
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm ci
+      - id: deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: bash node_modules/@simplifyd/picossg-to-aws/scripts/deploy.sh dev
