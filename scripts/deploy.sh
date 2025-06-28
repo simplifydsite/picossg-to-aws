@@ -32,10 +32,12 @@ echo "Using s3 bucket ${S3_BUCKET}"
 echo "Using stack name ${STACK_NAME}"
 
 if [ -f ~/.zshrc ]; then
-  source ~/.zshrc
+  zsh npx @wolframkriesing/picossg@latest -c content -o output
+else
+  bash npx @wolframkriesing/picossg@latest -c content -o output
 fi
 
-npx @wolframkriesing/picossg@latest -c content -o output
+
 aws s3 sync --delete output/ "s3://${S3_BUCKET}/"
 aws cloudfront create-invalidation \
 		--distribution-id "$(aws cloudfront list-distributions | jq --arg stack_name "${STACK_NAME}" -r '.DistributionList.Items[] | select(.Comment==$stack_name) | .Id')" \
