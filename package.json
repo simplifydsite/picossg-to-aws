@@ -42,7 +42,6 @@
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^2",
-    "@types/fs-extra": "^11.0.4",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.7",
     "@typescript-eslint/eslint-plugin": "^8",
@@ -69,9 +68,6 @@
   "peerDependencies": {
     "aws-cdk-lib": "^2.202.0",
     "constructs": "^10.0.5"
-  },
-  "dependencies": {
-    "fs-extra": "^10.1.0"
   },
   "keywords": [
     "cdk"

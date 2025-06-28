@@ -17,9 +17,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   npmAccess: NpmAccess.PUBLIC,
   packageManager: NodePackageManager.NPM,
   minNodeVersion: '22.15.0',
-  deps: ['fs-extra'],
   devDeps: [
-    '@types/fs-extra',
     '@types/node',
     'esbuild',
   ],
