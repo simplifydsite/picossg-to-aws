@@ -32,7 +32,7 @@ echo "Using s3 bucket ${S3_BUCKET}"
 echo "Using stack name ${STACK_NAME}"
 
 if [ -f ~/.zshrc ]; then
-  zsh npx @wolframkriesing/picossg@latest -c content -o output
+  zsh -c "npx @wolframkriesing/picossg@latest -c content -o output"
 else
   bash npx @wolframkriesing/picossg@latest -c content -o output
 fi
