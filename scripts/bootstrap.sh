@@ -10,6 +10,7 @@ export AWS_ACCOUNT
 export CNAME
 export DOMAIN_NAME
 export AWS_REGION
+export ERROR_PATH
 
 if grep -q "\[profile ${AWS_PROFILE}\]" "${HOME}/.aws/config" ; then
   echo "Profile ${AWS_PROFILE} configured ✅"

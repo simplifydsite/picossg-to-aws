@@ -22,6 +22,7 @@ export AWS_ACCOUNT
 export CNAME
 export DOMAIN_NAME
 export AWS_REGION
+export ERROR_PATH
 
 PROJECT_NAME=$(cat package.json | jq -r .name)
 OUTPUT_DIR="/tmp/cdk/${PROJECT_NAME}/${1}"

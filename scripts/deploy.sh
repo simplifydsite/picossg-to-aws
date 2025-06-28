@@ -16,6 +16,7 @@ export AWS_ACCOUNT
 export CNAME
 export DOMAIN_NAME
 export AWS_REGION
+export ERROR_PATH
 
 if [ -z "${2}" ];
 then
@@ -31,14 +32,7 @@ fi
 echo "Using s3 bucket ${S3_BUCKET}"
 echo "Using stack name ${STACK_NAME}"
 
-if [ -f ~/.zshrc ]; then
-  echo "using zsh"
-  zsh -c "npx @wolframkriesing/picossg@latest -c content -o output"
-else
-  echo "using bash"
-  bash npx @wolframkriesing/picossg@latest -c content -o output
-fi
-
+node node_modules/@wolframkriesing/picossg/src/build-cli.js -c content -o output
 
 aws s3 sync --delete output/ "s3://${S3_BUCKET}/"
 aws cloudfront create-invalidation \
