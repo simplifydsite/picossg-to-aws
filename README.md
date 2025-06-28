@@ -46,15 +46,6 @@ ERROR_PATH=not-found.html
 
 This makes sure that credentials are not committed to git.
 
-### add dependency
-
-```bash
-npm install --save-dev \
-  @simplifyd/picossg-to-aws \
-  @wolframkriesing/picossg \
-  tsx
-```
-
 ### deploy infrastructure
 
 ```bash

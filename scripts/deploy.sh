@@ -32,6 +32,7 @@ fi
 echo "Using s3 bucket ${S3_BUCKET}"
 echo "Using stack name ${STACK_NAME}"
 
+npm i --no-save tsx @wolframkriesing/picossg @simplifyd/picossg-to-aws
 node node_modules/@wolframkriesing/picossg/src/build-cli.js -c content -o output
 
 aws s3 sync --delete output/ "s3://${S3_BUCKET}/"
