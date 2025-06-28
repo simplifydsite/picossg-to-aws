@@ -66,7 +66,8 @@ Add a github workflow to deploy the code to AWS
  npx -p @simplifyd/picossg-to-aws@latest add-workflows
 ```
 
-Will automatically deploy pushes to main to production and pull requests with a label called `deploy_dev` to dev.
+Will automatically deploy pushes to main to production (`.env.prod`) and pull requests
+with a label called `deploy_dev` to dev (`.env.dev`).
 
 To make the workflows work, you have to add the credentials of the deployment AWS user to the github repo environment
 secrets. The credentials can be found in the output of the deploy-infrastructure command.
