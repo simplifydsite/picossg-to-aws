@@ -10,11 +10,13 @@ const domainName = process.env.DOMAIN_NAME || undefined
 const cname = process.env.CNAME || undefined
 const region = getMandatoryEnv('AWS_REGION')
 const account = getMandatoryEnv('AWS_ACCOUNT')
+const errorPath = process.env.ERROR_PATH || undefined
 
 new PicoSsgHostingStack(app, stackName, {
   staticAssetsBucketName: s3Bucket,
   domainName,
   cname,
+  websiteErrorDocument: errorPath,
   deploymentUsername: `${stackName}Deployment`,
   env: { region, account },
 })
