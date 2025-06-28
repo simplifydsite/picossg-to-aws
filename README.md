@@ -49,19 +49,19 @@ This makes sure that credentials are not committed to git.
 ### add dependency
 
 ```bash
-npm install --save-dev @simplifyd/picossg-to-aws tsx
+npm install --save-dev @simplifyd/picossg-to-aws@latest tsx
 ```
 
 ### deploy infrastructure
 
 ```bash
- npx -p @simplifyd/picossg-to-aws picossg-deploy-infrastructure <env> <aws-profile>
+ npx -p @simplifyd/picossg-to-aws@latest picossg-deploy-infrastructure <env> <aws-profile>
 ```
 
 ### deploy frontend
 
 ```bash
- npx -p @simplifyd/picossg-to-aws picossg-deploy <env>
+ npx -p @simplifyd/picossg-to-aws@latest picossg-deploy <env>
 ```
 
 ### add github workflows [optional]
@@ -69,7 +69,13 @@ npm install --save-dev @simplifyd/picossg-to-aws tsx
 Add a github workflow to deploy the code to AWS
 
 ```bash
- npx -p @simplifyd/picossg-to-aws add-workflows
+ npx -p @simplifyd/picossg-to-aws@latest add-workflows
 ```
 
 Will automatically deploy pushes to main to production and pull requests with a label called `deploy_dev` to dev.
+
+To make the workflows work, you have to add the credentials of the deployment AWS user to the github repo environment
+secrets. The credentials can be found in the output of the deploy-infrastructure command.
+
+* `AccessKeyId` => `AWS_ACCESS_KEY_ID`
+* `SecretKey` => `AWS_SECRET_ACCESS_KEY`
