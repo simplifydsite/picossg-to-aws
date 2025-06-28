@@ -49,7 +49,7 @@ This makes sure that credentials are not committed to git.
 ### add dependency
 
 ```bash
-npm install --save-dev @simplifyd/picossg-to-aws@latest tsx
+npm install --save-dev tsx
 ```
 
 ### deploy infrastructure
